@@ -15,7 +15,7 @@ namespace Sign.Controllers
         {
             _context = context;    
         }
-
+        //commed
        
         public async Task<IActionResult> Index()
         {
@@ -23,22 +23,7 @@ namespace Sign.Controllers
         }
 
       
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var Apartments = await _context.Apartments
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (Apartments == null)
-            {
-                return NotFound();
-            }
-
-            return View(Apartments);
-        }
+       
 
        
         public IActionResult Create()
