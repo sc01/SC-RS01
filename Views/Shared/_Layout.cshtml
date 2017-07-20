@@ -31,6 +31,23 @@
 
 
     <link href="~/FrameWork/js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.css" rel="stylesheet" />
+    
+    <link href="~/css/site.css" rel="stylesheet">
+    
+    @*file Upload css Classes*@
+    
+    <link href="~/FileUpload/jQuery.FileUpload/css/jquery.fileupload.css" rel="stylesheet"/>
+
+    <link href="~/FileUpload/jQuery.FileUpload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+
+    <link href="~/FileUpload/blueimp-gallery2/css/blueimp-gallery.css" rel="stylesheet" />
+
+    <link href="~/FileUpload/blueimp-gallery2/css/blueimp-gallery-video.css" rel="stylesheet" />
+
+    <link href="~/FileUpload/blueimp-gallery2/css/blueimp-gallery-indicator.css" rel="stylesheet" />
+
+    @*file Upload css Classes*@
+
 
 
 
@@ -53,10 +70,10 @@
                 <li><a href="#"><i class="icon-home"></i><span class="title">الرئيسة</span> <span class="label label-secondary pull-right"></span></a></li>
                 
                 <li class="has-sub">
-                    <a href="#"><i class="icon-doc-text"></i><span class="title">تصــفية عــهدة</span></a>
+                    <a href="#"><i class="icon-doc-text"></i><span class="title">اداره الشــقق</span></a>
                     <ul class="nav collapse">
-                        <li><a asp-controller="CostDays" asp-action="Create"><span class="title">اضافة جديد *</span></a></li>
-                        <li><a asp-controller="CostDays" asp-action="Index"><span class="title">جميع العهــد</span></a></li>
+                        <li><a asp-controller="Apartments" asp-action="Create"><span class="title">اضافة شقــة جــديده *</span></a></li>
+                        <li><a asp-controller="Apartments" asp-action="Index"><span class="title">جمــيع الشــقق</span></a></li>
                     </ul>
                 </li>
 

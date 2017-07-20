@@ -562,7 +562,7 @@ $.extend( $.validator, {
 			.not( this.settings.ignore )
 			.filter( function() {
 				if ( !this.name && validator.settings.debug && window.console ) {
-					console.error( "%o has no name assigned", this );
+					console.error( "%o has no name asSigned", this );
 				}
 
 				// select only the first element for each name, and only those with rules specified
@@ -822,7 +822,7 @@ $.extend( $.validator, {
 					}
 					$( element ).attr( "aria-describedby", describedBy );
 
-					// If this element is grouped, then assign to all elements in the same group
+					// If this element is grouped, then asSign to all elements in the same group
 					group = this.groups[ element.name ];
 					if ( group ) {
 						$.each( this.groups, function( name, testgroup ) {

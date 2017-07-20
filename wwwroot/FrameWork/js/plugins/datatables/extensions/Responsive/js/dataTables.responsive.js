@@ -60,7 +60,7 @@ var DataTable = $.fn.dataTable;
  * Responsive for DataTables has two modes of operation, which can used
  * individually or combined:
  *
- * * Class name based control - columns assigned class names that match the
+ * * Class name based control - columns asSigned class names that match the
  *   breakpoint logic can be shown / hidden as required for each breakpoint.
  * * Automatic control - columns are automatically hidden when there is no
  *   room left to display them. Columns removed from the right.
@@ -1051,7 +1051,7 @@ Responsive.defaults = {
 	/**
 	 * Enable / disable auto hiding calculations. It can help to increase
 	 * performance slightly if you disable this option, but all columns would
-	 * need to have breakpoint classes assigned to them
+	 * need to have breakpoint classes asSigned to them
 	 *
 	 * @type {Boolean}
 	 * @default  `true`

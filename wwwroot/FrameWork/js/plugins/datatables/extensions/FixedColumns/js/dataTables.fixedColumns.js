@@ -659,7 +659,7 @@ $.extend( FixedColumns.prototype , {
 			}
 			else
 			{
-				// Inner width is used to assign widths to cells
+				// Inner width is used to asSign widths to cells
 				// Outer width is used to calculate the container
 				var iWidth = th.outerWidth();
 

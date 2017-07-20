@@ -348,7 +348,7 @@ th {
 .glyphicon-off:before {
   content: "\e017";
 }
-.glyphicon-signal:before {
+.glyphicon-Signal:before {
   content: "\e018";
 }
 .glyphicon-cog:before {
@@ -534,22 +534,22 @@ th {
 .glyphicon-chevron-right:before {
   content: "\e080";
 }
-.glyphicon-plus-sign:before {
+.glyphicon-plus-Sign:before {
   content: "\e081";
 }
-.glyphicon-minus-sign:before {
+.glyphicon-minus-Sign:before {
   content: "\e082";
 }
-.glyphicon-remove-sign:before {
+.glyphicon-remove-Sign:before {
   content: "\e083";
 }
-.glyphicon-ok-sign:before {
+.glyphicon-ok-Sign:before {
   content: "\e084";
 }
-.glyphicon-question-sign:before {
+.glyphicon-question-Sign:before {
   content: "\e085";
 }
-.glyphicon-info-sign:before {
+.glyphicon-info-Sign:before {
   content: "\e086";
 }
 .glyphicon-screenshot:before {
@@ -585,7 +585,7 @@ th {
 .glyphicon-resize-small:before {
   content: "\e097";
 }
-.glyphicon-exclamation-sign:before {
+.glyphicon-exclamation-Sign:before {
   content: "\e101";
 }
 .glyphicon-gift:before {
@@ -603,7 +603,7 @@ th {
 .glyphicon-eye-close:before {
   content: "\e106";
 }
-.glyphicon-warning-sign:before {
+.glyphicon-warning-Sign:before {
   content: "\e107";
 }
 .glyphicon-plane:before {

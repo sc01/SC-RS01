@@ -1,6 +1,6 @@
 # KeyTable
 
-KeyTable provides enhanced accessibility and navigation options for DataTables enhanced tables, by allowing Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells to allow advanced interaction options.. Key features include:
+KeyTable provides enhanced accessibility and navigation options for DataTables enhanced tables, by allowing Excel like cell navigation on any table. Events (focus, blur, action etc) can be asSigned to individual cells, columns, rows or all cells to allow advanced interaction options.. Key features include:
 
 * Easy to use spreadsheet like interaction
 * Fully integrated with DataTables

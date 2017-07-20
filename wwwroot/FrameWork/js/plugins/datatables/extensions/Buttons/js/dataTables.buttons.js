@@ -815,7 +815,7 @@ $.extend( Buttons.prototype, {
 			conf = $.extend( {}, objArray, conf );
 
 			// The extend will have overwritten the original class name if the
-			// `conf` object also assigned a class, but we want to concatenate
+			// `conf` object also asSigned a class, but we want to concatenate
 			// them so they are list that is combined from all extended buttons
 			if ( originalClassName && conf.className !== originalClassName ) {
 				conf.className = originalClassName+' '+conf.className;
@@ -869,7 +869,7 @@ $.extend( Buttons.prototype, {
  * Show / hide a background layer behind a collection
  * @param  {boolean} Flag to indicate if the background should be shown or
  *   hidden 
- * @param  {string} Class to assign to the background
+ * @param  {string} Class to asSign to the background
  * @static
  */
 Buttons.background = function ( show, className, fade ) {
@@ -894,7 +894,7 @@ Buttons.background = function ( show, className, fade ) {
 
 /**
  * Instance selector - select Buttons instances based on an instance selector
- * value from the buttons assigned to a DataTable. This is only useful if
+ * value from the buttons asSigned to a DataTable. This is only useful if
  * multiple instances are attached to a DataTable.
  * @param  {string|int|array} Instance selector - see `instance-selector`
  *   documentation on the DataTables site

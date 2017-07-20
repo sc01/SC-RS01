@@ -1,6 +1,6 @@
 # KeyTable
 
-KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
+KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be asSigned to individual cells, columns, rows or all cells.
 
 
 # Installation

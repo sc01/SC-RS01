@@ -202,7 +202,7 @@
 .icon-palette:before { content: "🎨"; } /* '\1f3a8' */
 .icon-list:before { content: "\e005"; } /* '\e005' */
 .icon-list-add:before { content: "\e003"; } /* '\e003' */
-.icon-signal:before { content: "📶"; } /* '\1f4f6' */
+.icon-Signal:before { content: "📶"; } /* '\1f4f6' */
 .icon-trophy:before { content: "🏆"; } /* '\1f3c6' */
 .icon-battery:before { content: "🔋"; } /* '\1f50b' */
 .icon-back-in-time:before { content: "\e771"; } /* '\e771' */

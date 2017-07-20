@@ -666,7 +666,7 @@ function typeSelect ( e, dt, ctx, type, idx )
  * DataTables selectors
  */
 
-// row and column are basically identical just assigned to different properties
+// row and column are basically identical just asSigned to different properties
 // and checking a different array, so we can dynamically create the functions to
 // reduce the code size
 $.each( [

@@ -319,7 +319,7 @@ $.extend( FixedHeader.prototype, {
 	},
 
 	/**
-	 * Remove assigned widths from the cells in an element. This is required
+	 * Remove asSigned widths from the cells in an element. This is required
 	 * when inserting the footer back into the main table so the size is defined
 	 * by the header columns and also when auto width is disabled in the
 	 * DataTable.

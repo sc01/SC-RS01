@@ -722,7 +722,7 @@
 			th.addClass( oClasses.sSortableNone ); // Have to add class here as order event isn't called
 		}
 	
-		/* Check that the class assignment is correct for sorting */
+		/* Check that the class asSignment is correct for sorting */
 		var bAsc = $.inArray('asc', oCol.asSorting) !== -1;
 		var bDesc = $.inArray('desc', oCol.asSorting) !== -1;
 		if ( !oCol.bSortable || (!bAsc && !bDesc) )
@@ -1394,7 +1394,7 @@
 				else
 				{
 					// If array notation is used, we just want to strip it and use the property name
-					// and assign the value. If it isn't used, then we get the result we want anyway
+					// and asSign the value. If it isn't used, then we get the result we want anyway
 					data[ aLast.replace(__reArray, '') ] = val;
 				}
 			};
@@ -4142,7 +4142,7 @@
 		else
 		{
 			// Otherwise construct a single row, worst case, table with the widest
-			// node in the data, assign any user defined widths, then insert it into
+			// node in the data, asSign any user defined widths, then insert it into
 			// the DOM and allow the browser to do all the hard work of calculating
 			// table widths
 			var tmpTable = $(table).clone() // don't use cloneNode - IE8 will remove events on the main table
@@ -4153,7 +4153,7 @@
 			tmpTable.find('tbody tr').remove();
 			var tr = $('<tr/>').appendTo( tmpTable.find('tbody') );
 	
-			// Remove any assigned widths from the footer (from scrolling)
+			// Remove any asSigned widths from the footer (from scrolling)
 			tmpTable.find('tfoot th, tfoot td').css('width', '');
 	
 			// Apply custom sizing to the cloned header
@@ -4206,7 +4206,7 @@
 			// Take into account the y scrollbar
 			_fnScrollingWidthAdjust( oSettings, tmpTable[0] );
 	
-			// Browsers need a bit of a hand when a width is assigned to any columns
+			// Browsers need a bit of a hand when a width is asSigned to any columns
 			// when x-scrolling as they tend to collapse the table to the min-width,
 			// even if we sent the column widths. So we need to keep track of what
 			// the table width should be by summing the user given values, and the
@@ -5086,7 +5086,7 @@
 	
 	
 	/**
-	 * See if a property is defined on one object, if so assign it to the other object
+	 * See if a property is defined on one object, if so asSign it to the other object
 	 *  @param {object} ret target object
 	 *  @param {object} src source object
 	 *  @param {string} name property
@@ -5703,7 +5703,7 @@
 		 *  @param {int} [col] Optional column index that you want the data of.
 		 *  @returns {array|object|string} If mRow is undefined, then the data for all rows is
 		 *    returned. If mRow is defined, just data for that row, and is iCol is
-		 *    defined, only data for the designated cell is returned.
+		 *    defined, only data for the deSignated cell is returned.
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
 		 *
@@ -6691,7 +6691,7 @@
 	 * a "context" - i.e. the tables that it will operate on. This could be a single
 	 * table, all tables on a page or a sub-set thereof.
 	 *
-	 * Additionally the API is designed to allow you to easily work with the data in
+	 * Additionally the API is deSigned to allow you to easily work with the data in
 	 * the tables, retrieving and manipulating it as required. This is done by
 	 * presenting the API class as an array like interface. The contents of the
 	 * array depend upon the actions requested by each method (for example
@@ -7598,7 +7598,7 @@
 		// Reduce the API instance to the first item found
 		for ( var i=0, ien=inst.length ; i<ien ; i++ ) {
 			if ( inst[i].length > 0 ) {
-				// Assign the first element to the first item in the instance
+				// AsSign the first element to the first item in the instance
 				// and truncate the instance and context
 				inst[0] = inst[i];
 				inst[0].length = 1;
@@ -9350,7 +9350,7 @@
 		"bVisible": null,
 	
 		/**
-		 * Store for manual type assignment using the `column.type` option. This
+		 * Store for manual type asSignment using the `column.type` option. This
 		 * is held in store so we can manipulate the column's `sType` property.
 		 *  @type string
 		 *  @default null
@@ -9385,7 +9385,7 @@
 		 * Function to get data from a cell in a column. You should <b>never</b>
 		 * access data directly through _aData internally in DataTables - always use
 		 * the method attached to this property. It allows mData to function as
-		 * required. This function is automatically assigned by the column
+		 * required. This function is automatically asSigned by the column
 		 * initialisation method
 		 *  @type function
 		 *  @param {array|object} oData The data array/object for the array
@@ -9401,7 +9401,7 @@
 		 * Function to set data for a cell in the column. You should <b>never</b>
 		 * set the data directly to _aData internally in DataTables - always use
 		 * this method. It allows mData to function as required. This function
-		 * is automatically assigned by the column initialisation method
+		 * is automatically asSigned by the column initialisation method
 		 *  @type function
 		 *  @param {array|object} oData The data array/object for the array
 		 *    (i.e. aoData[]._aData)
@@ -9454,7 +9454,7 @@
 		"sClass": null,
 	
 		/**
-		 * When DataTables calculates the column widths to assign to each column,
+		 * When DataTables calculates the column widths to asSign to each column,
 		 * it finds the longest string in each column and then constructs a
 		 * temporary table and reads the widths from that. The problem with this
 		 * is that "mmm" is much wider then "iiii", but the latter is a longer
@@ -9881,7 +9881,7 @@
 		 *     <li>a string - class name will be matched on the TH for the column</li>
 		 *     <li>0 or a positive integer - column index counting from the left</li>
 		 *     <li>a negative integer - column index counting from the right</li>
-		 *     <li>the string "_all" - all columns (i.e. assign a default)</li>
+		 *     <li>the string "_all" - all columns (i.e. asSign a default)</li>
 		 *   </ul>
 		 *  @member
 		 *
@@ -9962,7 +9962,7 @@
 		 * Deferred rendering can provide DataTables with a huge speed boost when you
 		 * are using an Ajax or JS data source for the table. This option, when set to
 		 * true, will cause DataTables to defer the creation of the table elements for
-		 * each row until they are needed for a draw - saving a significant amount of
+		 * each row until they are needed for a draw - saving a Significant amount of
 		 * time.
 		 *  @type boolean
 		 *  @default false
@@ -10612,7 +10612,7 @@
 		 *    pairs) that has been constructed by DataTables and will be sent to the
 		 *    server. In the case of Ajax sourced data with server-side processing
 		 *    this will be an empty array, for server-side processing there will be a
-		 *    significant number of parameters!
+		 *    Significant number of parameters!
 		 *  @returns {undefined} Ensure that you modify the data array passed in,
 		 *    as this is passed by reference.
 		 *
@@ -10928,7 +10928,7 @@
 	
 	
 		/**
-		 * Classes that DataTables assigns to the various components and features
+		 * Classes that DataTables asSigns to the various components and features
 		 * that it adds to the HTML table. This allows classes to be configured
 		 * during initialisation in addition to through the static
 		 * {@link DataTable.ext.oStdClasses} object).
@@ -11397,7 +11397,7 @@
 	
 	
 			/**
-			 * Assign a `placeholder` attribute to the search `input` element
+			 * AsSign a `placeholder` attribute to the search `input` element
 			 *  @type string
 			 *  @default 
 			 *
@@ -12317,7 +12317,7 @@
 		"sClass": "",
 	
 		/**
-		 * When DataTables calculates the column widths to assign to each column,
+		 * When DataTables calculates the column widths to asSign to each column,
 		 * it finds the longest string in each column and then constructs a
 		 * temporary table and reads the widths from that. The problem with this
 		 * is that "mmm" is much wider then "iiii", but the latter is a longer
@@ -12615,7 +12615,7 @@
 	 *  @todo Really should attach the settings object to individual instances so we
 	 *    don't need to create new instances on each $().dataTable() call (if the
 	 *    table already exists). It would also save passing oSettings around and
-	 *    into every single function. However, this is a very significant
+	 *    into every single function. However, this is a very Significant
 	 *    architecture change for DataTables and will almost certainly break
 	 *    backwards compatibility with older installations. This is something that
 	 *    will be done in 2.0.
@@ -12638,7 +12638,7 @@
 	
 			/**
 			 * Delay the creation of TR and TD elements until they are actually
-			 * needed by a driven page draw. This can give a significant speed
+			 * needed by a driven page draw. This can give a Significant speed
 			 * increase for Ajax source and Javascript source data, but makes no
 			 * difference at all fro DOM and server-side processing tables.
 			 * Note that this parameter will be set by the initialisation routine. To
@@ -13802,8 +13802,8 @@
 		/**
 		 * Type based plug-ins.
 		 *
-		 * Each column in DataTables has a type assigned to it, either by automatic
-		 * detection or by direct assignment using the `type` option for the column.
+		 * Each column in DataTables has a type asSigned to it, either by automatic
+		 * detection or by direct asSignment using the `type` option for the column.
 		 * The type of a column will effect how it is ordering and search (plug-ins
 		 * can also make use of the column type if required).
 		 *
@@ -13863,7 +13863,7 @@
 			 * Note that is a search is not defined for a column of a given type,
 			 * no search formatting will be performed.
 			 * 
-			 * Pre-processing of searching data plug-ins - When you assign the sType
+			 * Pre-processing of searching data plug-ins - When you asSign the sType
 			 * for a column (or have it automatically detected for you by DataTables
 			 * or a type detection plug-in), you will typically be using this for
 			 * custom sorting, but it can also be used to provide custom searching

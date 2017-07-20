@@ -84,7 +84,7 @@ function fnArraySwitch( aArray, iFrom, iTo )
 
 
 /**
- * Switch the positions of nodes in a parent node (note this is specifically designed for
+ * Switch the positions of nodes in a parent node (note this is specifically deSigned for
  * table rows). Note this function considers all element nodes under the parent!
  *  @method  fnDomSwitch
  *  @param   string sTag Tag to consider

@@ -2059,9 +2059,9 @@ if (typeof jQuery === 'undefined') {
   // ====================
 
   var Tab = function (element) {
-    // jscs:disable requireDollarBeforejQueryAssignment
+    // jscs:disable requireDollarBeforejQueryAsSignment
     this.element = $(element)
-    // jscs:enable requireDollarBeforejQueryAssignment
+    // jscs:enable requireDollarBeforejQueryAsSignment
   }
 
   Tab.VERSION = '3.3.6'

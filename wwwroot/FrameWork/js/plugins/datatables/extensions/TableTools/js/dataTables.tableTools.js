@@ -534,7 +534,7 @@ TableTools = function( oDT, oOpts )
 		},
 
 		/**
-		 * A unique ID is assigned to each button in each instance
+		 * A unique ID is asSigned to each button in each instance
 		 * @property buttonCounter
 		 *  @type	 int
 		 * @default  0
@@ -1375,7 +1375,7 @@ TableTools.prototype = {
 
 	/**
 	 * Get the settings object for the master instance. When more than one TableTools instance is
-	 * assigned to a DataTable, only one of them can be the 'master' (for the select rows). As such,
+	 * asSigned to a DataTable, only one of them can be the 'master' (for the select rows). As such,
 	 * we will typically want to interact with that master for global properties.
 	 *  @method  _fnGetMasterSettings
 	 *  @returns {Object} TableTools settings object

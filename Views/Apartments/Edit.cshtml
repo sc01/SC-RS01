@@ -1,0 +1,324 @@
+﻿@model Sign.Models.Business.Apartment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="panel panel-primary">
+<div class="panel-heading clearfix">
+    <h3 class="panel-title">اضــافة شقــة جـديدة</h3>
+    <ul class="panel-tool-options">
+        <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+        <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+        <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+    </ul>
+</div>
+
+<div class="panel-body">
+
+<form asp-action="Edit">
+
+<input asp-for="Id" type="hidden"/>
+
+<input asp-for="EntryDate" type="hidden"/>
+
+<div class="row">
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="row">
+
+    @*<div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="EntryDate" class="control-label"></label>
+
+                <div id="dat1" class="input-group date">
+                    <input asp-for="EntryDate" type="date" data-format="dd-MM-yyyy" class="form-control">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                </div>
+                <span asp-validation-for="EntryDate" class="text-danger"/>
+
+
+            </div>
+        </div>*@
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="ApartmentType" class="control-label"></label>
+
+            <select asp-for="ApartmentType" class="select2 form-control">
+                <option value="تجـاري محـلات">تجـاري محـلات</option>
+                <option value="تجـاري مكـاتب">تجـاري مكـاتب</option>
+                <option value="سكـني عوائل<">سكـني عوائل</option>
+                <option value="سكـني عـزاب<">سكـني عـزاب</option>
+            </select>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="ShowType" class="control-label"></label>
+
+            <select asp-for="ShowType" class="select2 form-control">
+                <option value="سعـي">سعـي</option>
+                <option value="اداره امـلاك">اداره امـلاك</option>
+                <option value="استثمار">استثمار</option>
+            </select>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="StreetName" class="control-label"></label>
+
+            <input asp-for="StreetName" class="form-control"/>
+            <span asp-validation-for="StreetName" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Gada" class="control-label"></label>
+
+            <input asp-for="Gada" class="form-control"/>
+            <span asp-validation-for="Gada" class="text-danger"></span>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Area" class="control-label"></label>
+
+            <input asp-for="Area" class="form-control"/>
+            <span asp-validation-for="Area" class="text-danger"></span>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="RoomCount" class="control-label"></label>
+            <input type="text" asp-for="RoomCount" class="form-control"/>
+            <span asp-validation-for="RoomCount" class="text-danger"></span>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="HallCount" class="control-label"></label>
+            <input asp-for="HallCount" type="text" class="form-control"/>
+            <span asp-validation-for="HallCount" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="BathRoomCount" class="control-label"></label>
+            <input asp-for="BathRoomCount" type="text" class="form-control"/>
+            <span asp-validation-for="BathRoomCount" class="text-danger"></span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="AqarState" class="control-label"></label>
+
+            <select asp-for="AqarState" class="select2 form-control">
+                <option value="جــديد">جــديد</option>
+                <option value="مجــدد">مجــدد</option>
+                <option value="متــوسط">متــوسط</option>
+                <option value="قــديم">قــديم</option>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="ApartmentPlace" class="control-label"></label>
+            <select asp-for="ApartmentPlace" class="select2 form-control">
+                <option value="داخـل فلة">داخـل فلة</option>
+                <option value="داخـل عمـارة">داخـل عمـارة</option>
+            </select>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="FloorNumber" class="control-label"></label>
+
+            <select asp-for="FloorNumber" class="select2 form-control">
+                <option value="الـدور الارضــي">الـدور الارضــي</option>
+                <option value="الـدور الاول">الـدور الاول</option>
+                <option value="الـدور الثـاني">الـدور الثـاني</option>
+                <option value="الـدور الثـالث">الـدور الثـالث</option>
+                <option value="الـدور الرابـع">الـدور الرابـع</option>
+                <option value="الـدور الخـامس">الـدور الخـامس</option>
+                <option value="ملـحق">ملـحق</option>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="GateState" class="control-label"></label>
+            <select asp-for="GateState" class="select2 form-control">
+                <option value="مدخـل منفصل">مدخـل منفصل</option>
+                <option value="مدخـل مشترك">مدخـل مشترك</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="SplitCount" class="control-label"></label>
+            <input type="text" asp-for="SplitCount" class="form-control"/>
+            <span asp-validation-for="SplitCount" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="WallTypeCount" class="control-label"></label>
+            <input type="text" asp-for="WallTypeCount" class="form-control"/>
+            <span asp-validation-for="WallTypeCount" class="text-danger"></span>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label asp-for="HeaterCount" class="control-label"></label>
+
+            <input type="text" asp-for="HeaterCount" class="form-control"/>
+            <span asp-validation-for="HeaterCount" class="text-danger"></span>
+
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="KitchinIsFound" class="control-label"></label>
+
+            <select asp-for="KitchinIsFound" class="select2 form-control">
+                <option value="موجـود">موجـود</option>
+                <option value="غيـر موجـود">غيـر موجـود</option>
+            </select>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="ElectricBill" class="control-label"></label>
+
+            <select asp-for="ElectricBill" class="select2 form-control">
+                <option value="مشــتقل">مشــتقل</option>
+                <option value="مشتـرك">مشتـرك</option>
+                <option value="مبـلغ مقطوع">مبـلغ مقطوع</option>
+            </select>
+
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="WaterBill" class="control-label"></label>
+
+            <select asp-for="WaterBill" class="select2 form-control">
+                <option value="مشــتقل">مشــتقل</option>
+                <option value="مشتـرك">مشتـرك</option>
+                <option value="مبـلغ مقطوع">مبـلغ مقطوع</option>
+            </select>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="form-group">
+            <label asp-for="Services" class="control-label"></label>
+            <textarea rows="3" cols="8" asp-for="Services" class="form-control"> </textarea>
+            <span asp-validation-for="Services" class="text-danger"></span>
+        </div>
+
+    </div>
+</div>
+<br/>
+<div class="form-group">
+    <div class="col-md-1">
+        <input type="submit" value="حفـــــــــــــــــــــــــــــــظ" class="btn btn-primary"/>
+    </div>
+    <div class="col-md-1">
+        <a class="btn btn-primary" asp-action="Index">رجـــــــــــــــــــــــــــــــوع</a>
+    </div>
+    <div class="col-md-1">
+        <input type="reset" value="تنظـــــيف الشــاشة" class="btn btn-primary"/>
+    </div>
+</div>
+</div>
+</form>
+
+</div>
+    
+
+</div>
+
+
+
+@section Scripts {
+    <script>
+        $('#dat1').datepicker({
+            keyboardNavigation: true,
+            forceParse: false,
+            todayHighlight: true
+        });
+    </script>
+}

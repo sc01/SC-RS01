@@ -220,7 +220,7 @@ $(function () {
 
 
     var radarData = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        labels: ["Eating", "Drinking", "Sleeping", "DeSigning", "Coding", "Cycling", "Running"],
         datasets: [
             {
                 label: "My First dataset",
