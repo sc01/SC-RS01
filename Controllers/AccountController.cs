@@ -16,6 +16,7 @@ namespace Sign.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        //smaple
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _SignInManager;
         private readonly IEmailSender _emailSender;
