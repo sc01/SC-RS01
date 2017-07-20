@@ -23,7 +23,7 @@ namespace Sign.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
-
+        //heloo gethub
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> SignInManager,
