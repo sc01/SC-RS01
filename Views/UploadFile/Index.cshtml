@@ -4,35 +4,37 @@
 }
 
 
-
-<div>
-    @Html.Partial("_FileuploadWidget")
-</div>
+<form id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload","UploadFile")">
+    <div>
+        @Html.Partial("_FileuploadWidget")
+    </div>
+    
+    <button type="button" onclick="clikme()">btn</button>
+</form>
 
 @section Scripts
 {
     @Html.Partial("_FileuploadblueimJs")
 
     <script>
+        var files = [];
         var $form = null;
         $(function () {
 
             $form = $('#fileupload').fileupload({
                 dataType: 'json'
+            }).bind('fileuploaddone', function (e, data) {
+                files.push(data.result.files[0]);
             });
 
         });
         $('#fileupload').addClass('fileupload-processing');
  
-
-
         $.ajax({
                 type: 'GET',
                 contentType: "application/json; charset=utf-8",
                 url: '/FileUpload/GetFileList',
                 success: function (data) {
-
-
                     $('#fileupload').fileupload('option', 'done')
                         .call($('#fileupload'), $.Event('done'), { result: { files: data.files } });
                     $('#fileupload').removeClass('fileupload-processing');
@@ -41,6 +43,10 @@
             }
 
         );
+
+        function clikme() {
+            console.log(files);
+        }
     </script>
 
 }

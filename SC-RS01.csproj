@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="First.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\FileUploadJs\blueimp-gallery2\js\blueimp-gallery-fullscreen.js" />
     <Content Include="wwwroot\FileUploadJs\blueimp-gallery2\js\blueimp-gallery-fullscreen.min.js" />
     <Content Include="wwwroot\FileUploadJs\blueimp-gallery2\js\blueimp-gallery-fullscreen.min.js.map" />
