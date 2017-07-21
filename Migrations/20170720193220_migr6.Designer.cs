@@ -8,9 +8,10 @@ using Sign.Models.Business;
 namespace Sign.Migrations
 {
     [DbContext(typeof(RealStateDatabase))]
-    partial class RealStateDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20170720193220_migr6")]
+    partial class migr6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -224,32 +225,6 @@ namespace Sign.Migrations
                     b.ToTable("Apartments");
                 });
 
-            modelBuilder.Entity("Sign.Models.Business.Customer", b =>
-                {
-                    b.Property<long>("id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("CustomerId");
-
-                    b.Property<string>("CustomerType");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Nationality");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("WorkPalce");
-
-                    b.Property<string>("WorkPhone");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Customers");
-                });
-
             modelBuilder.Entity("Sign.Models.Business.AttachmentForApartment", b =>
                 {
                     b.Property<long>("Id")
@@ -263,7 +238,7 @@ namespace Sign.Migrations
 
                     b.HasIndex("ApartmentId");
 
-                    b.ToTable("AttachmentForApartments");
+                    b.ToTable("AttachmentForApartment");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

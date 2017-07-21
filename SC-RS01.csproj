@@ -14,7 +14,13 @@
     <ApplicationIcon />
     <OutputTypeEx>exe</OutputTypeEx>
     <StartupObject />
+    <AssemblyName>SC-RS01</AssemblyName>
+    <RootNamespace>SC-RS01</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="First.txt" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="wwwroot\FileUploadJs\blueimp-gallery2\js\blueimp-gallery-fullscreen.js" />

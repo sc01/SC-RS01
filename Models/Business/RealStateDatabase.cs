@@ -11,6 +11,7 @@ namespace Sign.Models.Business
         }
 
         public DbSet<Apartment> Apartments { get; set; }
+        public DbSet<AttachmentForApartment> AttachmentForApartments { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
     }
