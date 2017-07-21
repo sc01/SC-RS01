@@ -8,9 +8,10 @@ using Sign.Models.Business;
 namespace Sign.Migrations
 {
     [DbContext(typeof(RealStateDatabase))]
-    partial class RealStateDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20170720170517_myf4")]
+    partial class myf4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

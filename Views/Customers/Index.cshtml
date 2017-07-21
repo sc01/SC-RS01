@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Sign.Models.Business.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"> إضافة عميل جديد</a>
+</p>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title">قـــائــمــة الـعـمـلاء</h3>
+                <ul class="panel-tool-options">
+                    <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+                    <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+                    <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover dataTables-example ">
+                        <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nationality)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WorkPalce)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WorkPhone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nationality)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WorkPalce)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WorkPhone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.id" class="text-primary"><i class="glyphicon glyphicon-edit"></i></a>
+
+                                    <a href="#" onclick="deleteitm(this , @item.id)" class="text-primary"><i class="icon-trash"></i></a>
+                                </td>
+
+                                
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+
+        function deleteitm(e , id) {
+            if (confirm("هل تريد الحذف فعلا؟")) {
+                $.get("/Customers/Delete?id=" + id,
+                    function() {
+                        alert("تم الحــذف بنجاح !");
+                        $(e).parent().parent().remove();
+                    });
+            }
+        }
+
+    </script>
+}

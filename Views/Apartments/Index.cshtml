@@ -120,8 +120,9 @@
             if (confirm("هل تريد الحذف فعلا؟")) {
                 $.get("/Apartments/Delete?id=" + id,
                     function() {
-                        alert("تم الحــذف بنجاح !");
+                       
                         $(e).parent().parent().remove();
+                        alert("تم الحــذف بنجاح !");
                     });
             }
         }
