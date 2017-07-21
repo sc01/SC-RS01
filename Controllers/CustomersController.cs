@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +14,11 @@ namespace Sign.Controllers
     public class CustomersController : Controller
     {
         private readonly RealStateDatabase _context;
+        private IHostingEnvironment _env;
 
-        public CustomersController(RealStateDatabase context)
+        public CustomersController(RealStateDatabase context , IHostingEnvironment env)
         {
+            _env = env;
             _context = context;    
         }
 
@@ -130,7 +133,7 @@ namespace Sign.Controllers
             List<string> allContery=new List<string>();
             string line;
             System.IO.StreamReader file =
-                new System.IO.StreamReader("c:\\Users\\sobaoi\\Source\\Repos\\SC-RS01\\wwwroot\\Contery.txt");
+                new System.IO.StreamReader(_env.WebRootPath + "/Contery.txt");
             while ((line = file.ReadLine()) != null)
             {
                 allContery.Add(line);
