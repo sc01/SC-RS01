@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Sign
@@ -7,6 +8,7 @@ namespace Sign
     {
         public static void Main(string[] args)
         {
+           
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory()).UseUrls("http://localhost:9090")

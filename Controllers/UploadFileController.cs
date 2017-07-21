@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web.Hosting;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Sign.HelperClasses;
@@ -51,5 +49,7 @@ namespace Sign.Controllers
     
             return View();
         }
+
+        
     }
 }

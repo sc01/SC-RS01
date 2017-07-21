@@ -14,6 +14,8 @@
     <ApplicationIcon />
     <OutputTypeEx>exe</OutputTypeEx>
     <StartupObject />
+    <AssemblyName>SC-RS01</AssemblyName>
+    <RootNamespace>SC-RS01</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

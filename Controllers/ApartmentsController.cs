@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Sign.HelperClasses;
 using Sign.Models.Business;
 
 namespace Sign.Controllers
@@ -11,21 +14,63 @@ namespace Sign.Controllers
     {
         private readonly RealStateDatabase _context;
 
-        public ApartmentsController(RealStateDatabase context)
+        readonly FilesHelper _filesHelper;
+
+        String serverMapPath = "/Files/somefiles/";
+
+        private string UrlBase = "/Files/somefiles/";
+
+        String DeleteURL = "/Apartments/DeleteFile/?file=";
+
+        String DeleteType = "GET";
+
+        public ApartmentsController(RealStateDatabase context , IHostingEnvironment hostenvirment)
         {
-            _context = context;    
+            _context = context;
+            string rootpath = hostenvirment.WebRootPath + @"\Files\somefiles\";
+            _filesHelper = new FilesHelper(DeleteURL, DeleteType, rootpath, UrlBase, serverMapPath);
         }
-        //commed
-       
+
+
+        [HttpPost]
+        public JsonResult Upload()
+        {
+            var resultList = new List<ViewDataUploadFilesResult>();
+
+            _filesHelper.UploadWholeFile(Request, resultList);
+
+            JsonFiles files = new JsonFiles(resultList);
+
+            bool isEmpty = !resultList.Any();
+            if (isEmpty)
+            {
+                return Json("Error ");
+            }
+
+            //here save image file name by extions to retrive it other time
+            return Json(files);
+        }
+
+        public JsonResult GetFileList(int id)
+        {
+          var data =  _context.Apartments.Include(apartment => apartment.AttachmentForApartments)
+                .SingleOrDefault(apartment => apartment.Id == id);
+            List<string> list = new List<string>();
+
+            foreach (AttachmentForApartment apartment in data.AttachmentForApartments)
+            {
+                list.Add(apartment.Name);
+            }
+
+            return Json(_filesHelper.GetFileList(list));
+        }
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.Apartments.ToListAsync());
         }
 
       
-       
-
-       
         public IActionResult Create()
         {
             return View(new Apartment());
@@ -102,6 +147,16 @@ namespace Sign.Controllers
         private bool ApartmentsExists(long id)
         {
             return _context.Apartments.Any(e => e.Id == id);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> DeleteFile(string file)
+        {
+            IEnumerable<AttachmentForApartment> filetodelete =  _context.AttachmentForApartments.Where(apartment => apartment.Name == file);
+            _context.RemoveRange(filetodelete);
+            await _context.SaveChangesAsync();
+            _filesHelper.DeleteFile(file);
+            return Json("OK");
         }
     }
 }

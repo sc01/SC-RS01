@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -50,5 +51,7 @@ namespace Sign.Models.Business
         public string ElectricBill { get; set; }
         [Display(Name = "فــاتورة المياه")]
         public string WaterBill { get; set; }
+
+        public List<AttachmentForApartment> AttachmentForApartments { get; set; }
     }
 }

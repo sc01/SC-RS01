@@ -8,9 +8,10 @@ using Sign.Models.Business;
 namespace Sign.Migrations
 {
     [DbContext(typeof(RealStateDatabase))]
-    partial class RealStateDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20170720193220_migr6")]
+    partial class migr6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -237,7 +238,7 @@ namespace Sign.Migrations
 
                     b.HasIndex("ApartmentId");
 
-                    b.ToTable("AttachmentForApartments");
+                    b.ToTable("AttachmentForApartment");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Web.Helpers;
 using System.Web.Hosting;
 using HttpRequest = Microsoft.AspNetCore.Http.HttpRequest;
 
@@ -70,22 +69,28 @@ namespace Sign.HelperClasses
             String failMessage = "Error Delete";
             return failMessage;
         }
-        public JsonFiles GetFileList()
+        public JsonFiles GetFileList(List<string>filelist)
         {
 
             var r = new List<ViewDataUploadFilesResult>();
        
-            String fullPath = Path.Combine(_storageRoot);
-            if (Directory.Exists(fullPath))
-            {
-                DirectoryInfo dir = new DirectoryInfo(fullPath);
-                foreach (FileInfo file in dir.GetFiles())
-                {
-                    int SizeInt = unchecked((int)file.Length);
-                    r.Add(UploadResult(file.Name,SizeInt,file.FullName));
-                }
+            //String fullPath = Path.Combine(_storageRoot);
+            
+            //    DirectoryInfo dir = new DirectoryInfo(fullPath);
+            //    foreach (FileInfo file in dir.GetFiles())
+            //    {
+            //        int SizeInt = unchecked((int)file.Length);
+            //        r.Add(UploadResult(file.Name,SizeInt,file.FullName));
+            //    }
 
+            foreach (string filename in filelist)
+            {
+                var file = new FileInfo(Path.Combine(_storageRoot , filename));
+
+                int SizeInt = unchecked((int)file.Length);
+                r.Add(UploadResult(file.Name, SizeInt, file.FullName));
             }
+                
             JsonFiles files = new JsonFiles(r);
 
             return files;

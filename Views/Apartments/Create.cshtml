@@ -16,7 +16,7 @@
 
 <div class="panel-body">
 
-<form asp-action="Create">
+<form asp-action="Create" id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload","Apartments")">
     <div class="row">
        
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -286,18 +286,30 @@
            
         </div>
     </div>
-        <br/>
+        
+    <h3 >صـــور من الشـــقة :</h3>
+
+        @Html.Partial("_FileuploadWidget")
+   
+
+    <br/>
+
     <div class="form-group">
-        <div class="col-md-1">
+        <div class="col-md-2">
             <input type="submit" value="حفـــــــــــــــــــــــــــــــظ" class="btn btn-primary" />
         </div>
-        <div class="col-md-1">
+      
+        <div class="col-md-2">
             <a class="btn btn-primary" asp-action="Index">رجـــــــــــــــــــــــــــــــوع</a>
         </div>
-        <div class="col-md-1">
+       
+        <div class="col-md-2">
             <input type="reset" value="تنظـــــيف الشــاشة" class="btn btn-primary" />
         </div>
-        </div>
+     
+    </div>
+        
+
     </div>
 </form>
 
@@ -316,4 +328,75 @@
             todayHighlight: true
         });
     </script>
+    
+    
+    @Html.Partial("_FileuploadblueimJs")
+
+    <script>
+
+        $.fn.serializeObject = function () {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+        $("#fileupload").submit(function (e) {
+            e.preventDefault();
+           
+            var dataform = $(this).serializeObject();
+
+            dataform.AttachmentForApartments = files;
+         
+            if ($(this).valid()) {
+                $.post($(this).attr("action"), dataform,
+                    function () {
+                        location.href = "/Apartments/index";
+                    });
+            }
+       
+        });
+
+        var files = [];
+        var $form = null;
+        $(function () {
+
+            $form = $('#fileupload').fileupload({
+                dataType: 'json'
+            }).bind('fileuploaddone', function (e, data) {
+              
+                files.push({ Name: data.result.files[0].name});
+            });
+
+        });
+        $('#fileupload').addClass('fileupload-processing');
+ 
+        $.ajax({
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                url: '/Apartments/GetFileList?id='+ @Model.Id,
+                success: function (data) {
+                    $('#fileupload').fileupload('option', 'done')
+                        .call($('#fileupload'), $.Event('done'), { result: { files: data.files } });
+                    $('#fileupload').removeClass('fileupload-processing');
+                }
+
+            }
+
+        );
+
+        function clikme() {
+            console.log(files);
+        }
+    </script>
+
 }
