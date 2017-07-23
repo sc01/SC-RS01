@@ -60,7 +60,7 @@ namespace Sign.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers.SingleOrDefaultAsync(m => m.id == id);
+            var customer = await _context.Customers.SingleOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();
@@ -73,7 +73,7 @@ namespace Sign.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long id, [Bind] Customer customer)
         {
-            if (id != customer.id)
+            if (id != customer.Id)
             {
                 return NotFound();
             }
@@ -87,7 +87,7 @@ namespace Sign.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.id))
+                    if (!CustomerExists(customer.Id))
                     {
                         return NotFound();
                     }
@@ -109,7 +109,7 @@ namespace Sign.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var customer = await _context.Customers.SingleOrDefaultAsync(m => m.id == id);
+            var customer = await _context.Customers.SingleOrDefaultAsync(m => m.Id == id);
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -117,12 +117,12 @@ namespace Sign.Controllers
 
         private bool CustomerExists(long id)
         {
-            return _context.Customers.Any(e => e.id == id);
+            return _context.Customers.Any(e => e.Id == id);
         }
 
         public bool Delete(long id)
         {
-            var customers=  _context.Customers.SingleOrDefault(m => m.id == id);
+            var customers=  _context.Customers.SingleOrDefault(m => m.Id == id);
             _context.Customers.Remove(customers);
              _context.SaveChanges();
             return true;

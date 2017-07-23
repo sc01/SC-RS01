@@ -53,5 +53,13 @@ namespace Sign.Models.Business
         public string WaterBill { get; set; }
 
         public List<AttachmentForApartment> AttachmentForApartments { get; set; }
+
+        [Display(Name = "مــالك الشقـة")]
+        public long CustomerId { get; set; }
+
+        public Customer Customer { get; set; }
+
+
+
     }
 }

@@ -10,7 +10,7 @@ namespace Sign.Models.Business
 {
     public class Customer
     {
-        public long id { get; set; }
+        public long Id { get; set; }
         [Display(Name= "إســم العـمـيل")]
         public string Name { get; set; }
         [Display(Name = "رقــم الهــوية")]
