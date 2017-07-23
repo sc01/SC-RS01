@@ -48,7 +48,17 @@
 
     @*file Upload css Classes*@
 
+    <style>
 
+        @@font-face {
+            font-family: 'cairo-regular';
+            src: url('../../wwwroot/fonts/cairo-regular.ttf') format('truetype');
+        }
+
+        body {
+            font-family: cairo-regular
+        }
+    </style>
 
 
     @Html.Raw(JavaScriptSnippet.FullScript)

@@ -20,7 +20,21 @@
 <form asp-action="Create" id="fileupload" method="POST" enctype="multipart/form-data" data-url="@Url.Action("Upload","Apartments")">
     <div class="row">
        
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                
+                <select asp-for="CustomerId" asp-items="@ViewBag.aprtmentData" class="select2 form-control">
+                   
+                </select>
+                 
+            </div>
+
+        </div>
+    </div>
 
     <div class="row">
         
@@ -381,7 +395,7 @@
         });
         $('#fileupload').addClass('fileupload-processing');
  
-        $.ajax({
+        @*$.ajax({
                 type: 'GET',
                 contentType: "application/json; charset=utf-8",
                 url: '/Apartments/GetFileList?id='+ @Model.Id,
@@ -393,7 +407,7 @@
 
             }
 
-        );
+        );*@
 
         function clikme() {
             console.log(files);

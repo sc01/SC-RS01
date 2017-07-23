@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Sign.Migrations
+namespace SCRS01.Migrations
 {
     public partial class migr1 : Migration
     {
@@ -63,35 +63,23 @@ namespace Sign.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Apartments",
+                name: "Customers",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ApartmentPlace = table.Column<string>(nullable: true),
-                    ApartmentType = table.Column<string>(nullable: true),
-                    AqarState = table.Column<string>(nullable: true),
-                    Area = table.Column<string>(nullable: true),
-                    BathRoomCount = table.Column<int>(nullable: false),
-                    ElectricBill = table.Column<string>(nullable: true),
-                    EntryDate = table.Column<DateTime>(type: "date", nullable: false),
-                    FloorNumber = table.Column<string>(nullable: true),
-                    Gada = table.Column<string>(nullable: true),
-                    GateState = table.Column<string>(nullable: true),
-                    HallCount = table.Column<int>(nullable: false),
-                    HeaterCount = table.Column<int>(nullable: false),
-                    KitchinIsFound = table.Column<string>(nullable: true),
-                    RoomCount = table.Column<int>(nullable: false),
-                    Services = table.Column<string>(nullable: true),
-                    ShowType = table.Column<string>(nullable: true),
-                    SplitCount = table.Column<int>(nullable: false),
-                    StreetName = table.Column<string>(nullable: true),
-                    WallTypeCount = table.Column<int>(nullable: false),
-                    WaterBill = table.Column<string>(nullable: true)
+                    Address = table.Column<string>(nullable: true),
+                    CustomerId = table.Column<string>(nullable: true),
+                    CustomerType = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Nationality = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    WorkPalce = table.Column<string>(nullable: true),
+                    WorkPhone = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Apartments", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,6 +168,102 @@ namespace Sign.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Apartments",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ApartmentPlace = table.Column<string>(nullable: true),
+                    ApartmentType = table.Column<string>(nullable: true),
+                    AqarState = table.Column<string>(nullable: true),
+                    Area = table.Column<string>(nullable: true),
+                    BathRoomCount = table.Column<int>(nullable: false),
+                    CustomerId = table.Column<long>(nullable: false),
+                    ElectricBill = table.Column<string>(nullable: true),
+                    EntryDate = table.Column<DateTime>(type: "date", nullable: false),
+                    FloorNumber = table.Column<string>(nullable: true),
+                    Gada = table.Column<string>(nullable: true),
+                    GateState = table.Column<string>(nullable: true),
+                    HallCount = table.Column<int>(nullable: false),
+                    HeaterCount = table.Column<int>(nullable: false),
+                    KitchinIsFound = table.Column<string>(nullable: true),
+                    RoomCount = table.Column<int>(nullable: false),
+                    Services = table.Column<string>(nullable: true),
+                    ShowType = table.Column<string>(nullable: true),
+                    SplitCount = table.Column<int>(nullable: false),
+                    StreetName = table.Column<string>(nullable: true),
+                    WallTypeCount = table.Column<int>(nullable: false),
+                    WaterBill = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Apartments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Apartments_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AttachmentForApartments",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ApartmentId = table.Column<long>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AttachmentForApartments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AttachmentForApartments_Apartments_ApartmentId",
+                        column: x => x.ApartmentId,
+                        principalTable: "Apartments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Contracts",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ApartmentDetilsId = table.Column<long>(nullable: true),
+                    ContractDate = table.Column<DateTime>(type: "date", nullable: false),
+                    ContractPlace = table.Column<string>(nullable: true),
+                    ContractType = table.Column<string>(nullable: true),
+                    CustomerId = table.Column<long>(nullable: false),
+                    ElectricBillValue = table.Column<decimal>(nullable: false),
+                    EndDate = table.Column<DateTime>(type: "date", nullable: false),
+                    InsuranceValue = table.Column<decimal>(nullable: false),
+                    OfficeFees = table.Column<decimal>(nullable: false),
+                    PeriodType = table.Column<string>(nullable: true),
+                    StartDate = table.Column<DateTime>(type: "date", nullable: false),
+                    TotoalContratValue = table.Column<decimal>(nullable: false),
+                    WaterBillValue = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contracts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Contracts_Apartments_ApartmentDetilsId",
+                        column: x => x.ApartmentDetilsId,
+                        principalTable: "Apartments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Contracts_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
@@ -216,6 +300,26 @@ namespace Sign.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Apartments_CustomerId",
+                table: "Apartments",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AttachmentForApartments_ApartmentId",
+                table: "AttachmentForApartments",
+                column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contracts_ApartmentDetilsId",
+                table: "Contracts",
+                column: "ApartmentDetilsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contracts_CustomerId",
+                table: "Contracts",
+                column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -236,13 +340,22 @@ namespace Sign.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Apartments");
+                name: "AttachmentForApartments");
+
+            migrationBuilder.DropTable(
+                name: "Contracts");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Apartments");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
         }
     }
 }

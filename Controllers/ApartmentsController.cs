@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Sign.HelperClasses;
 using Sign.Models.Business;
@@ -73,6 +74,8 @@ namespace Sign.Controllers
       
         public IActionResult Create()
         {
+           
+            ViewBag.aprtmentData = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("„‹‹«·‹‹ﬂ")) , "Id" , "Name");
             return View(new Apartment());
         }
 
@@ -97,12 +100,11 @@ namespace Sign.Controllers
             {
                 return NotFound();
             }
+           
+            var Apartments = await _context.Apartments.Include(apartment => apartment.Customer).SingleOrDefaultAsync(m => m.Id == id);
 
-            var Apartments = await _context.Apartments.SingleOrDefaultAsync(m => m.Id == id);
-            if (Apartments == null)
-            {
-                return NotFound();
-            }
+            ViewBag.aprtmentData = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("„‹‹«·‹‹ﬂ")), "Id", "Name", Apartments.CustomerId);
+
             return View(Apartments);
         }
 

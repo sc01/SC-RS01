@@ -40,13 +40,5 @@ namespace Sign.Models.Business
         public decimal OfficeFees { get; set; }
         [Display(Name = "بيانات الشـقـة")]
         public Apartment ApartmentDetils { get; set; }
-
-
-
-
-
-
-
-
     }
 }

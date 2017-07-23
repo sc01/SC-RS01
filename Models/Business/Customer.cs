@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+
 
 namespace Sign.Models.Business
 {
@@ -27,6 +27,10 @@ namespace Sign.Models.Business
         public string CustomerType { get; set; }
         [Display(Name = "العـنوان")]
         public string Address { get; set; }
+
+        public List<Apartment> Apartments { get; set; }
+
+        public List<Contract> Contracts { get; set; }
 
     }
 }

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Sign.Models.Business;
 
-namespace Sign.Migrations
+namespace SCRS01.Migrations
 {
     [DbContext(typeof(RealStateDatabase))]
-    [Migration("20170720170517_myf4")]
-    partial class myf4
+    [Migration("20170723200944_migr1")]
+    partial class migr1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -189,6 +189,8 @@ namespace Sign.Migrations
 
                     b.Property<int>("BathRoomCount");
 
+                    b.Property<long>("CustomerId");
+
                     b.Property<string>("ElectricBill");
 
                     b.Property<DateTime>("EntryDate")
@@ -222,12 +224,73 @@ namespace Sign.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("Apartments");
+                });
+
+            modelBuilder.Entity("Sign.Models.Business.AttachmentForApartment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long?>("ApartmentId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.ToTable("AttachmentForApartments");
+                });
+
+            modelBuilder.Entity("Sign.Models.Business.Contract", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long?>("ApartmentDetilsId");
+
+                    b.Property<DateTime>("ContractDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("ContractPlace");
+
+                    b.Property<string>("ContractType");
+
+                    b.Property<long>("CustomerId");
+
+                    b.Property<decimal>("ElectricBillValue");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("date");
+
+                    b.Property<decimal>("InsuranceValue");
+
+                    b.Property<decimal>("OfficeFees");
+
+                    b.Property<string>("PeriodType");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("date");
+
+                    b.Property<decimal>("TotoalContratValue");
+
+                    b.Property<decimal>("WaterBillValue");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentDetilsId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Contracts");
                 });
 
             modelBuilder.Entity("Sign.Models.Business.Customer", b =>
                 {
-                    b.Property<long>("id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
@@ -246,7 +309,7 @@ namespace Sign.Migrations
 
                     b.Property<string>("WorkPhone");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Customers");
                 });
@@ -285,6 +348,33 @@ namespace Sign.Migrations
                     b.HasOne("Sign.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Sign.Models.Business.Apartment", b =>
+                {
+                    b.HasOne("Sign.Models.Business.Customer", "Customer")
+                        .WithMany("Apartments")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Sign.Models.Business.AttachmentForApartment", b =>
+                {
+                    b.HasOne("Sign.Models.Business.Apartment", "Apartment")
+                        .WithMany("AttachmentForApartments")
+                        .HasForeignKey("ApartmentId");
+                });
+
+            modelBuilder.Entity("Sign.Models.Business.Contract", b =>
+                {
+                    b.HasOne("Sign.Models.Business.Apartment", "ApartmentDetils")
+                        .WithMany()
+                        .HasForeignKey("ApartmentDetilsId");
+
+                    b.HasOne("Sign.Models.Business.Customer", "CustomerName")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }
