@@ -8,9 +8,10 @@ using Sign.Models.Business;
 namespace SCRS01.Migrations
 {
     [DbContext(typeof(RealStateDatabase))]
-    partial class RealStateDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20170726190234_MyF1")]
+    partial class MyF1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)

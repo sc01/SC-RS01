@@ -7,8 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Sign.Models;
 using Sign.Models.Business;
-using Sign.RepositoriesClasses;
-using Sign.RepostryInterfaces;
 
 namespace Sign
 {
@@ -38,7 +36,7 @@ namespace Sign
         {
 
             services.AddDbContext<RealStateDatabase>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<RealStateDatabase>()

@@ -1557,6 +1557,19 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.Report.Viewer/11.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net/Microsoft.ReportViewer.Common.dll": {},
+          "lib/net/Microsoft.ReportViewer.ProcessingObjectModel.DLL": {},
+          "lib/net/Microsoft.ReportViewer.WebForms.DLL": {}
+        },
+        "runtime": {
+          "lib/net/Microsoft.ReportViewer.Common.dll": {},
+          "lib/net/Microsoft.ReportViewer.ProcessingObjectModel.DLL": {},
+          "lib/net/Microsoft.ReportViewer.WebForms.DLL": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink/1.1.2": {
         "type": "package",
         "dependencies": {
@@ -1723,6 +1736,81 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Npgsql/3.2.5": {
+        "type": "package",
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.3.0"
+        },
+        "frameworkAssemblies": [
+          "System"
+        ],
+        "compile": {
+          "lib/net451/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Npgsql.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "1.1.2",
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.2",
+          "Microsoft.Extensions.DependencyInjection": "1.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "Npgsql": "3.2.5"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.ComponentModel.Composition",
+          "System.ComponentModel.DataAnnotations",
+          "System.Core",
+          "System.Data",
+          "System.IO.Compression",
+          "System.Net.Http",
+          "System.Numerics",
+          "System.Transactions",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "1.1.2",
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.2",
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.2",
+          "Microsoft.Extensions.DependencyInjection": "1.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "Npgsql": "3.2.5",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "1.1.1"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.ComponentModel.Composition",
+          "System.ComponentModel.DataAnnotations",
+          "System.Core",
+          "System.Data",
+          "System.IO.Compression",
+          "System.Net.Http",
+          "System.Numerics",
+          "System.Transactions",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
         }
       },
       "NuGet.Frameworks/3.5.0": {
@@ -3795,6 +3883,19 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.Report.Viewer/11.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net/Microsoft.ReportViewer.Common.dll": {},
+          "lib/net/Microsoft.ReportViewer.ProcessingObjectModel.DLL": {},
+          "lib/net/Microsoft.ReportViewer.WebForms.DLL": {}
+        },
+        "runtime": {
+          "lib/net/Microsoft.ReportViewer.Common.dll": {},
+          "lib/net/Microsoft.ReportViewer.ProcessingObjectModel.DLL": {},
+          "lib/net/Microsoft.ReportViewer.WebForms.DLL": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink/1.1.2": {
         "type": "package",
         "dependencies": {
@@ -3961,6 +4062,81 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Npgsql/3.2.5": {
+        "type": "package",
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.3.0"
+        },
+        "frameworkAssemblies": [
+          "System"
+        ],
+        "compile": {
+          "lib/net451/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Npgsql.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "1.1.2",
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.2",
+          "Microsoft.Extensions.DependencyInjection": "1.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "Npgsql": "3.2.5"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.ComponentModel.Composition",
+          "System.ComponentModel.DataAnnotations",
+          "System.Core",
+          "System.Data",
+          "System.IO.Compression",
+          "System.Net.Http",
+          "System.Numerics",
+          "System.Transactions",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "1.1.2",
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.2",
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.2",
+          "Microsoft.Extensions.DependencyInjection": "1.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "Npgsql": "3.2.5",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "1.1.1"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.ComponentModel.Composition",
+          "System.ComponentModel.DataAnnotations",
+          "System.Core",
+          "System.Data",
+          "System.IO.Compression",
+          "System.Net.Http",
+          "System.Numerics",
+          "System.Transactions",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
         }
       },
       "NuGet.Frameworks/3.5.0": {
@@ -5908,6 +6084,18 @@
         "runtime.json"
       ]
     },
+    "Microsoft.Report.Viewer/11.0.0": {
+      "sha512": "QMPHoeVcTiqO55tUyG6z97nkesI0k8rNr1brbyECJezrK8XyjICzuRR3QtsZFI/7kalm4Ko/JCvK0lm+gztTVQ==",
+      "type": "package",
+      "path": "microsoft.report.viewer/11.0.0",
+      "files": [
+        "Microsoft.Report.Viewer.11.0.0.nupkg.sha512",
+        "Microsoft.Report.Viewer.nuspec",
+        "lib/net/Microsoft.ReportViewer.Common.dll",
+        "lib/net/Microsoft.ReportViewer.ProcessingObjectModel.DLL",
+        "lib/net/Microsoft.ReportViewer.WebForms.DLL"
+      ]
+    },
     "Microsoft.VisualStudio.Web.BrowserLink/1.1.2": {
       "sha512": "QOu+6RH3j+ncittuC5iZNAhOWyYy1BqVb7KPzeRk/s94Yl23+TOUqzH7NBdchObenhGqmFXT654VJEdSF1JERQ==",
       "type": "package",
@@ -6093,6 +6281,45 @@
         "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
         "tools/install.ps1"
+      ]
+    },
+    "Npgsql/3.2.5": {
+      "sha512": "89z5pHuLuwjkHz/cQLuM/YxlepR/0NKJP+Cvu8z1cAMv7AdKZnN5leQqV6HxIQDR245Xal1w5OH7kDb9hDRupg==",
+      "type": "package",
+      "path": "npgsql/3.2.5",
+      "files": [
+        "lib/net45/Npgsql.dll",
+        "lib/net45/Npgsql.xml",
+        "lib/net451/Npgsql.dll",
+        "lib/net451/Npgsql.xml",
+        "lib/netstandard1.3/Npgsql.dll",
+        "lib/netstandard1.3/Npgsql.xml",
+        "lib/netstandard2.0/Npgsql.dll",
+        "lib/netstandard2.0/Npgsql.xml",
+        "npgsql.3.2.5.nupkg.sha512",
+        "npgsql.nuspec"
+      ]
+    },
+    "Npgsql.EntityFrameworkCore.PostgreSQL/1.1.1": {
+      "sha512": "lr1K1ARQz4wU7uV13aokx6Ir1Je2cu/8dasRAAFczFdgVbJDGGSe0xqkfJX3ZkO8S6MvdmIQHQc9/Z8amfDOSQ==",
+      "type": "package",
+      "path": "npgsql.entityframeworkcore.postgresql/1.1.1",
+      "files": [
+        "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+        "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+        "npgsql.entityframeworkcore.postgresql.1.1.1.nupkg.sha512",
+        "npgsql.entityframeworkcore.postgresql.nuspec"
+      ]
+    },
+    "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.1.1": {
+      "sha512": "UXgRNtmOIc/gw3bvdof4hZu4rL9xIUGeSWklasd+Oj9SF7EH+OTu43/Qsz6YYrqX2sem2qxd004LwtW/CWpVHg==",
+      "type": "package",
+      "path": "npgsql.entityframeworkcore.postgresql.design/1.1.1",
+      "files": [
+        "lib/net451/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll",
+        "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll",
+        "npgsql.entityframeworkcore.postgresql.design.1.1.1.nupkg.sha512",
+        "npgsql.entityframeworkcore.postgresql.design.nuspec"
       ]
     },
     "NuGet.Frameworks/3.5.0": {
@@ -8680,8 +8907,11 @@
       "Microsoft.EntityFrameworkCore.Tools >= 1.1.1",
       "Microsoft.Extensions.Configuration.UserSecrets >= 1.1.2",
       "Microsoft.Extensions.Logging.Debug >= 1.1.2",
+      "Microsoft.Report.Viewer >= 11.0.0",
       "Microsoft.VisualStudio.Web.BrowserLink >= 1.1.2",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 1.1.1"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 1.1.1",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 1.1.1",
+      "Npgsql.EntityFrameworkCore.PostgreSQL.Design >= 1.1.1"
     ]
   },
   "packageFolders": {
@@ -8707,6 +8937,10 @@
     "frameworks": {
       "net452": {
         "dependencies": {
+          "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "target": "Package",
+            "version": "1.1.1"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "1.1.2"
@@ -8742,6 +8976,10 @@
             "target": "Package",
             "version": "1.1.2"
           },
+          "Microsoft.Report.Viewer": {
+            "target": "Package",
+            "version": "11.0.0"
+          },
           "Microsoft.VisualStudio.Web.BrowserLink": {
             "target": "Package",
             "version": "1.1.2"
@@ -8753,6 +8991,10 @@
           "Microsoft.Extensions.Configuration.UserSecrets": {
             "target": "Package",
             "version": "1.1.2"
+          },
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
+            "target": "Package",
+            "version": "1.1.1"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
