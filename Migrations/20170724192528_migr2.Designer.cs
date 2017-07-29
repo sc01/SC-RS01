@@ -8,13 +8,14 @@ using Sign.Models.Business;
 namespace SCRS01.Migrations
 {
     [DbContext(typeof(RealStateDatabase))]
-    partial class RealStateDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20170724192528_migr2")]
+    partial class migr2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
-                .HasAnnotation("ProductVersion", "1.1.2");
+                .HasAnnotation("ProductVersion", "1.1.2")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
                 {
@@ -206,8 +207,6 @@ namespace SCRS01.Migrations
                     b.Property<int>("HeaterCount");
 
                     b.Property<string>("KitchinIsFound");
-
-                    b.Property<string>("Name");
 
                     b.Property<int>("RoomCount");
 

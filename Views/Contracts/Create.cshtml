@@ -1,0 +1,176 @@
+﻿@model Sign.Models.Business.Contract
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="panel-primary">
+    
+    <div class="panel-heading clearfix">
+        <h3 class="panel-title">  إضـافــة بيانات العـقـد </h3>
+        <ul class="panel-tool-options">
+            <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+            <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+            <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <form asp-action="Create">
+            <div class="form-horizontal">
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ContractType" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <select asp-for="ContractType" class="select2 form-control">
+                            <option value="عــقــد جــديـد "> عــقــد جــديـد </option>
+                            <option value="عــقــد مـجـدد"> عــقــد مـجـدد  </option>
+                        
+                        </select>
+                        <span asp-validation-for="ContractType" class="text-danger"></span>
+                        
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ContractDate" class="col-md-2 control-label"></label>
+
+                        <div class="col-md-5">
+                            @* <input asp-for="ContractDate" class="form-control"/>*@
+                            <div id="dat1" class="input-group date">
+                                <input asp-for="ContractDate" type="text" data-format="dd-MM-yyyy" class="form-control">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                            <span asp-validation-for="ContractDate" class="text-danger"></span>
+                        </div>
+                       
+                    </div>
+                <div class="form-group">
+                    <label asp-for="ContractPlace" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ContractPlace" class="form-control"/>
+                        <span asp-validation-for="ContractPlace" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="col-md-2 control-label"></label>
+                    
+                        <div class="col-md-5">
+                            @* <input asp-for="ContractDate" class="form-control"/>*@
+                            <div id="date1" class="input-group date">
+                                <input asp-for="StartDate" type="text" data-format="dd-MM-yyyy" class="form-control">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                        
+             
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="col-md-2 control-label"></label>
+                    
+                        <div class="col-md-5">
+                            @* <input asp-for="ContractDate" class="form-control"/>*@
+                            <div id="date2" class="input-group date">
+                                <input asp-for="EndDate" type="text" data-format="dd-MM-yyyy" class="form-control">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>
+                       
+                </div>
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <select asp-for="CustomerId" class="select2 form-control" asp-items="@ViewBag.CustomerId"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TotoalContratValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="TotoalContratValue" class="form-control"/>
+                        <span asp-validation-for="TotoalContratValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ElectricBillValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ElectricBillValue" class="form-control"/>
+                        <span asp-validation-for="ElectricBillValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="WaterBillValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="WaterBillValue" class="form-control"/>
+                        <span asp-validation-for="WaterBillValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InsuranceValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="InsuranceValue" class="form-control"/>
+                        <span asp-validation-for="InsuranceValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PeriodType" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                       
+                        <select asp-for="PeriodType" class="select2 form-control">
+                            <option value=" شـهـري "> شـهـري </option>
+                            <option value=" ربـع سـنـوي"> ربـع سـنـوي </option>
+                            <option value=" نـصـف سـنـوي "> نـصـف سـنوي </option>
+                            <option value=" سـنـوي"> سـنـوي  </option>
+                        
+                        </select>
+                        <span asp-validation-for="PeriodType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OfficeFees" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="OfficeFees" class="form-control"/>
+                        <span asp-validation-for="OfficeFees" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-5">
+                        <input type="submit" value="حــفــظ" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts
+{
+    <script>
+        $('#dat1').datepicker({
+            keyboardNavigation: true,
+            forceParse: false,
+            todayHighlight: true
+        });
+    </script>
+    <script>
+        $('#date1').datepicker({
+            keyboardNavigation: true,
+            forceParse: false,
+            todayHighlight: true
+        });
+    </script>
+    <script>
+        $('#date2').datepicker({
+            keyboardNavigation: true,
+            forceParse: false,
+            todayHighlight: true
+        });
+    </script>
+
+}

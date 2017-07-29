@@ -12,7 +12,8 @@ namespace Sign.Models.Business
         [Column(TypeName = "date")]
         [Display(Name = "تاريخ اضافه الشقه")]
         public DateTime EntryDate { get; set; }
-
+        [Display(Name = "اسم تعريفي للشقة")]
+        public string Name { get; set; }
         [Display(Name = "نــوع العــرض")]
         public string ShowType { get; set; }
         [Display(Name = "نــوع الشــقة")]

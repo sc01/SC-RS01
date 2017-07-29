@@ -11,7 +11,7 @@ namespace Sign
            
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory()).UseUrls("http://localhost:9090")
+                .UseContentRoot(Directory.GetCurrentDirectory()).UseUrls("http://192.168.43.53:9090")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
