@@ -7,8 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Sign.Models;
 using Sign.Models.Business;
-using Sign.RepositoriesClasses;
-using Sign.RepostryInterfaces;
 
 namespace Sign
 {
