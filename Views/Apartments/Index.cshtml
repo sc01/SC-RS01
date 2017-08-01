@@ -34,10 +34,7 @@
                                 @Html.DisplayNameFor(model => model.ApartmentType)
                             </th>
 
-                            <th>
-                                @Html.DisplayNameFor(model => model.Gada)
-                            </th>
-             
+                          
               
                             <th>
                                 @Html.DisplayNameFor(model => model.RoomCount)
@@ -59,6 +56,10 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.ElectricBill)
                             </th>
+                            
+                            <th>
+                                @Html.DisplayNameFor(model => model.Building.Name)
+                            </th>
                
                             <th>الاعدادات</th>
                         </tr>
@@ -73,9 +74,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ApartmentType)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Gada)
-                                </td>
+                               
            
                                 <td>
                                     @Html.DisplayFor(modelItem => item.RoomCount)
@@ -95,6 +94,11 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ElectricBill)
                                 </td>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Building.Name) ( @Html.DisplayFor(modelItem => item.Building.Id) )
+                                </td>
+
        
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="text-primary"><i class="glyphicon glyphicon-edit"></i></a>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SCRS01.Migrations
 {
-    public partial class migr1 : Migration
+    public partial class MyF1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,7 +67,7 @@ namespace SCRS01.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Address = table.Column<string>(nullable: true),
                     CustomerId = table.Column<string>(nullable: true),
                     CustomerType = table.Column<string>(nullable: true),
@@ -87,7 +87,7 @@ namespace SCRS01.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     RoleId = table.Column<string>(nullable: false)
@@ -108,7 +108,7 @@ namespace SCRS01.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
@@ -169,38 +169,22 @@ namespace SCRS01.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Apartments",
+                name: "Buildings",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ApartmentPlace = table.Column<string>(nullable: true),
-                    ApartmentType = table.Column<string>(nullable: true),
-                    AqarState = table.Column<string>(nullable: true),
-                    Area = table.Column<string>(nullable: true),
-                    BathRoomCount = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     CustomerId = table.Column<long>(nullable: false),
-                    ElectricBill = table.Column<string>(nullable: true),
-                    EntryDate = table.Column<DateTime>(type: "date", nullable: false),
-                    FloorNumber = table.Column<string>(nullable: true),
                     Gada = table.Column<string>(nullable: true),
-                    GateState = table.Column<string>(nullable: true),
-                    HallCount = table.Column<int>(nullable: false),
-                    HeaterCount = table.Column<int>(nullable: false),
-                    KitchinIsFound = table.Column<string>(nullable: true),
-                    RoomCount = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Services = table.Column<string>(nullable: true),
-                    ShowType = table.Column<string>(nullable: true),
-                    SplitCount = table.Column<int>(nullable: false),
-                    StreetName = table.Column<string>(nullable: true),
-                    WallTypeCount = table.Column<int>(nullable: false),
-                    WaterBill = table.Column<string>(nullable: true)
+                    StreetName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Apartments", x => x.Id);
+                    table.PrimaryKey("PK_Buildings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Apartments_Customers_CustomerId",
+                        name: "FK_Buildings_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
@@ -208,11 +192,55 @@ namespace SCRS01.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Apartments",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    ApartmentPlace = table.Column<string>(nullable: true),
+                    ApartmentType = table.Column<string>(nullable: true),
+                    AqarState = table.Column<string>(nullable: true),
+                    Area = table.Column<string>(nullable: true),
+                    BathRoomCount = table.Column<int>(nullable: false),
+                    BuildingId = table.Column<int>(nullable: false),
+                    CustomerId = table.Column<long>(nullable: true),
+                    ElectricBill = table.Column<string>(nullable: true),
+                    EntryDate = table.Column<DateTime>(type: "date", nullable: false),
+                    FloorNumber = table.Column<string>(nullable: true),
+                    GateState = table.Column<string>(nullable: true),
+                    HallCount = table.Column<int>(nullable: false),
+                    HeaterCount = table.Column<int>(nullable: false),
+                    KitchinIsFound = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    RoomCount = table.Column<int>(nullable: false),
+                    ShowType = table.Column<string>(nullable: true),
+                    SplitCount = table.Column<int>(nullable: false),
+                    WallTypeCount = table.Column<int>(nullable: false),
+                    WaterBill = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Apartments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Apartments_Buildings_BuildingId",
+                        column: x => x.BuildingId,
+                        principalTable: "Buildings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Apartments_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AttachmentForApartments",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     ApartmentId = table.Column<long>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -232,7 +260,7 @@ namespace SCRS01.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     ApartmentDetilsId = table.Column<long>(nullable: true),
                     ContractDate = table.Column<DateTime>(type: "date", nullable: false),
                     ContractPlace = table.Column<string>(nullable: true),
@@ -302,6 +330,11 @@ namespace SCRS01.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Apartments_BuildingId",
+                table: "Apartments",
+                column: "BuildingId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Apartments_CustomerId",
                 table: "Apartments",
                 column: "CustomerId");
@@ -310,6 +343,11 @@ namespace SCRS01.Migrations
                 name: "IX_AttachmentForApartments_ApartmentId",
                 table: "AttachmentForApartments",
                 column: "ApartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Buildings_CustomerId",
+                table: "Buildings",
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contracts_ApartmentDetilsId",
@@ -353,6 +391,9 @@ namespace SCRS01.Migrations
 
             migrationBuilder.DropTable(
                 name: "Apartments");
+
+            migrationBuilder.DropTable(
+                name: "Buildings");
 
             migrationBuilder.DropTable(
                 name: "Customers");

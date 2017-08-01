@@ -68,14 +68,14 @@ namespace Sign.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Apartments.ToListAsync());
+            return View(await _context.Apartments.Include(apartment => apartment.Building).ToListAsync());
         }
 
       
         public IActionResult Create()
         {
            
-            ViewBag.aprtmentData = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("„‹‹«·‹‹ﬂ")) , "Id" , "Name");
+            ViewBag.aprtmentData = new SelectList(_context.Buildings , "Id" , "Name");
             return View(new Apartment());
         }
 
@@ -101,9 +101,9 @@ namespace Sign.Controllers
                 return NotFound();
             }
            
-            var Apartments = await _context.Apartments.Include(apartment => apartment.Customer).SingleOrDefaultAsync(m => m.Id == id);
+            var Apartments = await _context.Apartments.SingleOrDefaultAsync(m => m.Id == id);
 
-            ViewBag.aprtmentData = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("„‹‹«·‹‹ﬂ")), "Id", "Name", Apartments.CustomerId);
+           // ViewBag.aprtmentData = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("„‹‹«·‹‹ﬂ")), "Id", "Name", Apartments.CustomerId);
 
             return View(Apartments);
         }

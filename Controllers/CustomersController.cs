@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Sign.Models.Business;
 
 namespace Sign.Controllers
@@ -22,16 +20,12 @@ namespace Sign.Controllers
             _context = context;    
         }
 
-        // GET: Customers
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.Customers.ToListAsync());
         }
 
-        // GET: Customers/Details/5
-        
-
-        // GET: Customers/Create
         public IActionResult Create()
         {
             ViewData["Conterydata"] = ContreyList();
@@ -40,7 +34,7 @@ namespace Sign.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Name,CustomerId,Nationality,PhoneNumber,WorkPalce,WorkPhone,CustomerType,Address")] Customer customer)
+        public async Task<IActionResult> Create([Bind] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -51,7 +45,7 @@ namespace Sign.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Edit/5
+     
         public async Task<IActionResult> Edit(long? id)
         {
             ViewData["Conterydata"] = ContreyList();
@@ -101,10 +95,7 @@ namespace Sign.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Delete/5
-       
-
-        // POST: Customers/Delete/5
+     
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)

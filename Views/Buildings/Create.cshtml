@@ -1,0 +1,88 @@
+﻿@model Sign.Models.Business.Building
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="panel panel-primary">
+<div class="panel-heading clearfix">
+    <h3 class="panel-title">اضــافة عمــارة جـديدة</h3>
+    <ul class="panel-tool-options">
+        <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+        <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+        <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+    </ul>
+</div>
+  
+
+    <div class="panel-body">
+
+        <form asp-action="Create">
+            <div class="form-horizontal">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-2 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="col-md-2 control-label"></label>
+                    <div class="col-md-6">
+                        <select asp-for="CustomerId" class="select2 form-control" asp-items="ViewBag.CustomerId"></select>
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label asp-for="Gada" class="col-md-2 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Gada" class="form-control" />
+                        <span asp-validation-for="Gada" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="StreetName" class="col-md-2 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="StreetName" class="form-control" />
+                        <span asp-validation-for="StreetName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Services" class="col-md-2 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Services" class="form-control" />
+                        <span asp-validation-for="Services" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Count" class="col-md-2 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Count" class="form-control" />
+                        <span asp-validation-for="Count" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="حفــــــــــــــــــــــــــــــــــــظ" class="btn btn-primary" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>
+    <div>
+        <a asp-action="Index" class="text-primary">الرجــوع الي القائمة الرئيسية</a>
+    </div>
+

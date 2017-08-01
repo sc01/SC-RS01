@@ -16,5 +16,7 @@ namespace Sign.Models.Business
 
         public DbSet<Contract> Contracts { get; set; }
 
+        public DbSet<Building> Buildings { get; set; }
+
     }
 }

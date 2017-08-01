@@ -25,9 +25,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
+                <label asp-for="BuildingId" class="control-label"></label>
                 
-                <select asp-for="CustomerId" asp-items="@ViewBag.aprtmentData" class="select2 form-control">
+                <select asp-for="BuildingId" asp-items="@ViewBag.aprtmentData" class="select2 form-control">
                    
                 </select>
                  
@@ -82,32 +82,6 @@
 
         </div>
     </div>
-
-        <div class="row">
-                
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="StreetName" class="control-label"></label>
-               
-                    <input asp-for="StreetName" class="form-control" />
-                    <span asp-validation-for="StreetName" class="text-danger"></span>
-               
-                </div>
-        
-            </div>
-
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="Gada" class="control-label"></label>
-                  
-                    <input asp-for="Gada" class="form-control" />
-                    <span asp-validation-for="Gada" class="text-danger"></span>
-                   
-                </div>
-            </div>
-
-        </div>
-
 
        <div class="row">
         
@@ -291,22 +265,12 @@
 
     </div>
         
-    <div class="row">
-        <div class="col-md-8">
-            <div class="form-group">
-                <label asp-for="Services" class="control-label"></label>
-                <textarea rows="3" cols="8" asp-for="Services" class="form-control"> </textarea>
-                <span asp-validation-for="Services" class="text-danger"></span>
-            </div>
-           
-        </div>
-    </div>
+  
         
     <h3 >صـــور من الشـــقة :</h3>
 
         @Html.Partial("_FileuploadWidget")
    
-
     <br/>
 
     <div class="form-group">

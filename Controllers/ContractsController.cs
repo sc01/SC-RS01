@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Sign.Models.Business;
 
 
@@ -20,33 +17,16 @@ namespace Sign.Controllers
             _context = context;    
         }
 
-        // GET: Contracts
+       
         public async Task<IActionResult> Index()
         {
             var database = _context.Contracts.Include(c => c.CustomerName);
             return View(await database.ToListAsync());
         }
 
-        // GET: Contracts/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var contract = await _context.Contracts
-                .Include(c => c.CustomerName)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (contract == null)
-            {
-                return NotFound();
-            }
-
-            return View(contract);
-        }
-
-        // GET: Contracts/Create
+       
+   
+      
         public IActionResult Create()
         {
             ViewData["CustomerId"] = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("مـسـتـأجـر")), "Id", "Name");
@@ -68,7 +48,7 @@ namespace Sign.Controllers
             return View(contract);
         }
 
-        // GET: Contracts/Edit/5
+        
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
@@ -119,34 +99,12 @@ namespace Sign.Controllers
             return View(contract);
         }
 
-        // GET: Contracts/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public bool Delete(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var contract = await _context.Contracts
-                .Include(c => c.CustomerName)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (contract == null)
-            {
-                return NotFound();
-            }
-
-            return View(contract);
-        }
-
-        // POST: Contracts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
-        {
-            var contract = await _context.Contracts.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Contracts.Remove(contract);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            var contract = _context.Contracts.SingleOrDefault(m => m.Id == id);
+            if (contract != null) _context.Contracts.Remove(contract);
+            _context.SaveChanges();
+            return true;
         }
 
         private bool ContractExists(long id)

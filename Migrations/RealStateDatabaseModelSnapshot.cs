@@ -188,7 +188,9 @@ namespace SCRS01.Migrations
 
                     b.Property<int>("BathRoomCount");
 
-                    b.Property<long>("CustomerId");
+                    b.Property<int>("BuildingId");
+
+                    b.Property<long?>("CustomerId");
 
                     b.Property<string>("ElectricBill");
 
@@ -196,8 +198,6 @@ namespace SCRS01.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("FloorNumber");
-
-                    b.Property<string>("Gada");
 
                     b.Property<string>("GateState");
 
@@ -211,19 +211,17 @@ namespace SCRS01.Migrations
 
                     b.Property<int>("RoomCount");
 
-                    b.Property<string>("Services");
-
                     b.Property<string>("ShowType");
 
                     b.Property<int>("SplitCount");
-
-                    b.Property<string>("StreetName");
 
                     b.Property<int>("WallTypeCount");
 
                     b.Property<string>("WaterBill");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BuildingId");
 
                     b.HasIndex("CustomerId");
 
@@ -244,6 +242,30 @@ namespace SCRS01.Migrations
                     b.HasIndex("ApartmentId");
 
                     b.ToTable("AttachmentForApartments");
+                });
+
+            modelBuilder.Entity("Sign.Models.Business.Building", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Count");
+
+                    b.Property<long>("CustomerId");
+
+                    b.Property<string>("Gada");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Services");
+
+                    b.Property<string>("StreetName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Buildings");
                 });
 
             modelBuilder.Entity("Sign.Models.Business.Contract", b =>
@@ -354,10 +376,14 @@ namespace SCRS01.Migrations
 
             modelBuilder.Entity("Sign.Models.Business.Apartment", b =>
                 {
-                    b.HasOne("Sign.Models.Business.Customer", "Customer")
+                    b.HasOne("Sign.Models.Business.Building", "Building")
                         .WithMany("Apartments")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("BuildingId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Sign.Models.Business.Customer")
+                        .WithMany("Apartments")
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("Sign.Models.Business.AttachmentForApartment", b =>
@@ -367,10 +393,18 @@ namespace SCRS01.Migrations
                         .HasForeignKey("ApartmentId");
                 });
 
+            modelBuilder.Entity("Sign.Models.Business.Building", b =>
+                {
+                    b.HasOne("Sign.Models.Business.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Sign.Models.Business.Contract", b =>
                 {
                     b.HasOne("Sign.Models.Business.Apartment", "ApartmentDetils")
-                        .WithMany()
+                        .WithMany("Contracts")
                         .HasForeignKey("ApartmentDetilsId");
 
                     b.HasOne("Sign.Models.Business.Customer", "CustomerName")

@@ -18,12 +18,7 @@ namespace Sign.Models.Business
         public string ShowType { get; set; }
         [Display(Name = "نــوع الشــقة")]
         public string ApartmentType { get; set; }
-        [Display(Name = "إســم الحـي")]
-        public string Gada { get; set; }
-        [Display(Name = "إســم الشــارع")]
-        public string StreetName { get; set; }
-        [Display(Name = "الخــدمـات")]
-        public string Services { get; set; }
+       
         [Display(Name = "مســاحة الشــقة")]
         public string Area { get; set; }
         [Display(Name = "عــدد الغرف")]
@@ -55,10 +50,12 @@ namespace Sign.Models.Business
 
         public List<AttachmentForApartment> AttachmentForApartments { get; set; }
 
-        [Display(Name = "مــالك الشقـة")]
-        public long CustomerId { get; set; }
+        public List<Contract> Contracts { get; set; }
 
-        public Customer Customer { get; set; }
+        [Display(Name = "تتبع الي عمارة")]
+        public int BuildingId { get; set; }
+
+        public Building Building { get; set; }
 
 
 
