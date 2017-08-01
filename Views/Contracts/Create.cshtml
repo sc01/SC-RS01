@@ -1,4 +1,5 @@
-﻿@model Sign.Models.Business.Contract
+﻿@using Sign.Models.Business
+@model Sign.Models.Business.Contract
 
 @{
     ViewData["Title"] = "Create";
@@ -20,6 +21,28 @@
             <div class="form-horizontal">
                 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <div class="form-group">
+                    <label asp-for="ApartmentId" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <select asp-for="ApartmentId" class="select2 form-control">
+                           
+                           @foreach (Building bu in (List<Building>)ViewBag.builingData)
+                           {
+                               foreach (Apartment buApartment in bu.Apartments)
+                               {
+                                <option value="@buApartment.Id">@bu.Name (شقـة رقم @buApartment.Name)</option>
+
+                               }
+                           }
+
+                        </select>
+                        <span asp-validation-for="ApartmentId" class="text-danger"></span>
+                        
+                       
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label asp-for="ContractType" class="col-md-2 control-label"></label>
                     <div class="col-md-5">

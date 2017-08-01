@@ -8,9 +8,10 @@ using Sign.Models.Business;
 namespace SCRS01.Migrations
 {
     [DbContext(typeof(RealStateDatabase))]
-    partial class RealStateDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20170801184543_migr5")]
+    partial class migr5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
@@ -273,7 +274,7 @@ namespace SCRS01.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("ApartmentId");
+                    b.Property<long?>("ApartmentId");
 
                     b.Property<DateTime>("ContractDate")
                         .HasColumnType("date");
@@ -405,8 +406,7 @@ namespace SCRS01.Migrations
                 {
                     b.HasOne("Sign.Models.Business.Apartment", "Apartment")
                         .WithMany("Contracts")
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ApartmentId");
 
                     b.HasOne("Sign.Models.Business.Customer", "CustomerName")
                         .WithMany("Contracts")

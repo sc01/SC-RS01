@@ -53,7 +53,7 @@
                         @Html.DisplayNameFor(model => model.OfficeFees)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CustomerName)
+                        @Html.DisplayNameFor(model => model.Customer.CustomerId)
                     </th>
                     <th>الاعدادات</th>
                 </tr>
@@ -66,15 +66,15 @@
                             @Html.DisplayFor(modelItem => item.ContractType)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ContractDate)
-                            @Html.dis
+                           @item.ContractDate.ToShortDateString()
+                            
                         </td>
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.StartDate)
+                            @item.StartDate.ToShortDateString()
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.EndDate)
+                            @item.EndDate.ToShortDateString()
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.TotoalContratValue)
@@ -93,7 +93,7 @@
                             @Html.DisplayFor(modelItem => item.OfficeFees)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CustomerName.Name)
+                            @Html.DisplayFor(modelItem => item.Customer.Name)
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" class="text-primary"><i class="glyphicon glyphicon-edit"></i></a>

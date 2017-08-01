@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Sign.Models.Business
 {
@@ -15,20 +11,23 @@ namespace Sign.Models.Business
         [Display(Name = "نـــــوع الـــعـــقــد")]
         public string ContractType { get; set; }
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "تـــاريـــخ الــعــقــد")]
         public DateTime ContractDate { get; set; }
         [Display(Name = "مـكـان إبرام العـقـد")]
         public string ContractPlace { get; set; }
         [Column(TypeName ="date" )]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "تـاريخ بـداية العــقـد")]
         public DateTime StartDate { get; set; }
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "تـاريـخ نـهاية العـقـد")]
         public DateTime EndDate { get; set; }
         [Display(Name = "بيـانات الـمـسـتأجـر")]
         public long CustomerId { get; set; }
         [Display(Name = "بـيـانـات المـسـتـأجـر")]
-        public Customer CustomerName  { get; set; }
+        public Customer Customer { get; set; }
         [Display(Name = "اجـمالي قـيمة العـقد")]
         public decimal TotoalContratValue { get; set; }
         [Display(Name = "فــاتـورة الـكـهـرباء")]
@@ -41,7 +40,9 @@ namespace Sign.Models.Business
         public string PeriodType { get; set; }
         [Display(Name = "مــبــلـغ الــســعـي")]
         public decimal OfficeFees { get; set; }
+       
+        public Apartment Apartment { get; set; }
         [Display(Name = "بـيـانات الـشــقــة")]
-        public Apartment ApartmentDetils { get; set; }
+        public long ApartmentId { get; set; }
     }
 }

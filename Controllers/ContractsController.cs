@@ -20,7 +20,7 @@ namespace Sign.Controllers
        
         public async Task<IActionResult> Index()
         {
-            var database = _context.Contracts.Include(c => c.CustomerName);
+            var database = _context.Contracts.Include(c => c.Customer);
             return View(await database.ToListAsync());
         }
 
@@ -30,6 +30,7 @@ namespace Sign.Controllers
         public IActionResult Create()
         {
             ViewData["CustomerId"] = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("مـسـتـأجـر")), "Id", "Name");
+            ViewBag.builingData = _context.Buildings.Include(building => building.Apartments).ToList();
             return View(new Contract());
         }
 
@@ -61,6 +62,8 @@ namespace Sign.Controllers
             {
                 return NotFound();
             }
+            ViewBag.builingData = _context.Buildings.Include(building => building.Apartments).ToList();
+
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Name", contract.CustomerId);
             return View(contract);
         }
@@ -95,6 +98,9 @@ namespace Sign.Controllers
                 }
                 return RedirectToAction("Index");
             }
+
+            ViewBag.builingData = _context.Buildings.Include(building => building.Apartments).ToList();
+
             ViewData["CustomerId"] = new SelectList(_context.Customers, "id", "id", contract.CustomerId);
             return View(contract);
         }

@@ -1,110 +1,214 @@
-@model Sign.Models.Business.Contract
+﻿@using Sign.Models.Business
+@model Contract
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "تعديل";
 }
 
-<h2>Edit</h2>
+<div class="panel-primary">
 
-<form asp-action="Edit">
-    <div class="form-horizontal">
-        <h4>Contract</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-        <div class="form-group">
-            <label asp-for="ContractType" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ContractType" class="form-control" />
-                <span asp-validation-for="ContractType" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ContractDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ContractDate" class="form-control" />
-                <span asp-validation-for="ContractDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ContractPlace" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ContractPlace" class="form-control" />
-                <span asp-validation-for="ContractPlace" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="StartDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="StartDate" class="form-control" />
-                <span asp-validation-for="StartDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EndDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="CustomerId" class="control-label col-md-2"></label>
-            <div class="col-md-10">
-                <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.CustomerId"></select>
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="TotoalContratValue" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="TotoalContratValue" class="form-control" />
-                <span asp-validation-for="TotoalContratValue" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ElectricBillValue" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ElectricBillValue" class="form-control" />
-                <span asp-validation-for="ElectricBillValue" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="WaterBillValue" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="WaterBillValue" class="form-control" />
-                <span asp-validation-for="WaterBillValue" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="InsuranceValue" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="InsuranceValue" class="form-control" />
-                <span asp-validation-for="InsuranceValue" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PeriodType" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="PeriodType" class="form-control" />
-                <span asp-validation-for="PeriodType" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OfficeFees" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="OfficeFees" class="form-control" />
-                <span asp-validation-for="OfficeFees" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+    <div class="panel-heading clearfix">
+        <h3 class="panel-title">  تعـديل بيانات العـقـد </h3>
+        <ul class="panel-tool-options">
+            <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+            <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+            <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
     </div>
-</form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div class="panel-body">
+        <form asp-action="Edit">
+            <div class="form-horizontal">
+                <input type="hidden" asp-for="Id"/>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <div class="form-group">
+                    <label asp-for="ApartmentId" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <select asp-for="ApartmentId" class="select2 form-control">
+                           
+                            @foreach (Building bu in (List<Building>)ViewBag.builingData)
+                            {
+                                foreach (Apartment buApartment in bu.Apartments)
+                                {
+                                    if (buApartment.Id == Model.ApartmentId)
+                                    {
+                                        <option selected value="@buApartment.Id">@bu.Name (شقـة رقم @buApartment.Name)</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@buApartment.Id">@bu.Name (شقـة رقم @buApartment.Name)</option>
+                                    }
+
+
+
+                                }
+                            }
+
+                        </select>
+                        <span asp-validation-for="ApartmentId" class="text-danger"></span>
+                        
+                       
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label asp-for="ContractType" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <select asp-for="ContractType" class="select2 form-control">
+                            <option value="عــقــد جــديـد "> عــقــد جــديـد </option>
+                            <option value="عــقــد مـجـدد"> عــقــد مـجـدد  </option>
+
+                        </select>
+                        <span asp-validation-for="ContractType" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ContractDate" class="col-md-2 control-label"></label>
+
+                    <div class="col-md-5">
+                        @* <input asp-for="ContractDate" class="form-control"/>*@
+                        <div id="dat1" class="input-group date">
+                            <input asp-for="ContractDate" type="text" data-format="yy-mm-dd" class="form-control">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <span asp-validation-for="ContractDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="ContractPlace" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ContractPlace" class="form-control" />
+                        <span asp-validation-for="ContractPlace" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="col-md-2 control-label"></label>
+
+                    <div class="col-md-5">
+                        @* <input asp-for="ContractDate" class="form-control"/>*@
+                        <div id="date1" class="input-group date">
+                            <input asp-for="StartDate" type="text" data-format="dd-MM-yyyy" class="form-control">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="col-md-2 control-label"></label>
+
+                    <div class="col-md-5">
+                        @* <input asp-for="ContractDate" class="form-control"/>*@
+                        <div id="date2" class="input-group date">
+                            <input asp-for="EndDate" type="text" data-format="dd-MM-yyyy" class="form-control">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <select asp-for="CustomerId" class="select2 form-control" asp-items="@ViewBag.CustomerId"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TotoalContratValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="TotoalContratValue" class="form-control" />
+                        <span asp-validation-for="TotoalContratValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ElectricBillValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="ElectricBillValue" class="form-control" />
+                        <span asp-validation-for="ElectricBillValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="WaterBillValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="WaterBillValue" class="form-control" />
+                        <span asp-validation-for="WaterBillValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InsuranceValue" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="InsuranceValue" class="form-control" />
+                        <span asp-validation-for="InsuranceValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PeriodType" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+
+                        <select asp-for="PeriodType" class="select2 form-control">
+                            <option value=" شـهـري "> شـهـري </option>
+                            <option value=" ربـع سـنـوي"> ربـع سـنـوي </option>
+                            <option value=" نـصـف سـنـوي "> نـصـف سـنوي </option>
+                            <option value=" سـنـوي"> سـنـوي  </option>
+
+                        </select>
+                        <span asp-validation-for="PeriodType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OfficeFees" class="col-md-2 control-label"></label>
+                    <div class="col-md-5">
+                        <input asp-for="OfficeFees" class="form-control" />
+                        <span asp-validation-for="OfficeFees" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-5">
+                        <input type="submit" value="حــفــظ" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
 </div>
 
+<div>
+    <a asp-action="Index" class="text-primary">الرجـــوع الي قائمة العقود</a>
+</div>
+
+@section Scripts
+{
+    <script>
+
+
+        $('#dat1').datepicker({
+            keyboardNavigation: true,
+            forceParse: false,
+            todayHighlight: true,
+            dateFormat: 'yy-mm-dd'
+        });
+
+        $('#date1').datepicker({
+            keyboardNavigation: true,
+            forceParse: false,
+            todayHighlight: true,
+            dateFormat: 'yy-mm-dd'
+        });
+
+        $('#date2').datepicker({
+            keyboardNavigation: true,
+            forceParse: false,
+            todayHighlight: true,
+            dateFormat: 'yy-mm-dd'
+        });
+    </script>
+
+
+}

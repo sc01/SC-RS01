@@ -103,7 +103,7 @@ namespace Sign.Controllers
            
             var Apartments = await _context.Apartments.SingleOrDefaultAsync(m => m.Id == id);
 
-           // ViewBag.aprtmentData = new SelectList(_context.Customers.Where(customer => customer.CustomerType.Contains("„‹‹«·‹‹ﬂ")), "Id", "Name", Apartments.CustomerId);
+            ViewBag.aprtmentData = new SelectList(_context.Buildings, "Id", "Name", Apartments.BuildingId);
 
             return View(Apartments);
         }
