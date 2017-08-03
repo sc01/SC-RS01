@@ -1,0 +1,8 @@
+﻿@using Sign.Models.Business
+@inject RealStateDatabase db
+@{
+    ViewBag.Title = "الرئــيسية";
+  
+}
+
+<h3>@db.Apartments.Count().ToString()</h3>

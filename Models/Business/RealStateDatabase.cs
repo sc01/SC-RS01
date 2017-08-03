@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Sign.Models.Business;
 
 namespace Sign.Models.Business
 {
@@ -17,6 +18,8 @@ namespace Sign.Models.Business
         public DbSet<Contract> Contracts { get; set; }
 
         public DbSet<Building> Buildings { get; set; }
+
+        public DbSet<Sign.Models.Business.Accounting> Accounting { get; set; }
 
     }
 }

@@ -23,12 +23,15 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 
                 <div class="form-group">
-                    <label asp-for="ApartmentId" class="col-md-2 control-label"></label>
+                    <label asp-for="ApartId" class="col-md-2 control-label"></label>
                     <div class="col-md-5">
-                        <select asp-for="ApartmentId" class="select2 form-control">
-                           
+                        <select asp-for="ApartId" class="select2 form-control">
+                          
                            @foreach (Building bu in (List<Building>)ViewBag.builingData)
                            {
+                               int data = bu.Id * -1;
+
+                               <option value="@data">@bu.Name (كل العمارة)</option>
                                foreach (Apartment buApartment in bu.Apartments)
                                {
                                 <option value="@buApartment.Id">@bu.Name (شقـة رقم @buApartment.Name)</option>
@@ -37,7 +40,7 @@
                            }
 
                         </select>
-                        <span asp-validation-for="ApartmentId" class="text-danger"></span>
+                        <span asp-validation-for="ApartId" class="text-danger"></span>
                         
                        
                     </div>

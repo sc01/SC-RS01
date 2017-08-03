@@ -1,14 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputType>exe</OutputType>
   </PropertyGroup>
-
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
   </PropertyGroup>
-
   <PropertyGroup>
     <UserSecretsId>aspnet-Sign-0eab5374-ed2f-4506-8dd3-46c64d4cb4b2</UserSecretsId>
     <ApplicationIcon />
@@ -17,18 +14,15 @@
     <AssemblyName>SC-RS01</AssemblyName>
     <RootNamespace>SC-RS01</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Report\**" />
     <Content Remove="Report\**" />
     <EmbeddedResource Remove="Report\**" />
     <None Remove="Report\**" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="First.txt" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="wwwroot\FileUploadJs\blueimp-gallery2\js\blueimp-gallery-fullscreen.js" />
     <Content Include="wwwroot\FileUploadJs\blueimp-gallery2\js\blueimp-gallery-fullscreen.min.js" />
@@ -827,11 +821,11 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Home\" />
     <Folder Include="Views\UploadFile\" />
     <Folder Include="wwwroot\FileUpload\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web" />
   </ItemGroup>
-
 </Project>

@@ -41,8 +41,10 @@ namespace Sign.Models.Business
         [Display(Name = "مــبــلـغ الــســعـي")]
         public decimal OfficeFees { get; set; }
        
-        public Apartment Apartment { get; set; }
+    
         [Display(Name = "بـيـانات الـشــقــة")]
-        public long ApartmentId { get; set; }
+        public long ApartId { get; set; }
+
+        public long BuldId { get; set; }
     }
 }

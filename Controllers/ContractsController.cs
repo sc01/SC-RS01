@@ -41,7 +41,13 @@ namespace Sign.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (contract.ApartId < 0)
+                {
+                    contract.BuldId = contract.ApartId * -1;
+                    
+                }
                 _context.Add(contract);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
