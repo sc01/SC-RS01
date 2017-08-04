@@ -29,5 +29,7 @@ namespace Sign.Models.Business
         public long CmsId { get; set; }
 
         public long BulidingsId { get; set; }
+        
+       
     }
 }
